@@ -6,5 +6,5 @@ app.listen(3000, () => {
 });
 
 app.get('/', (req, res, next) => {
-  res.json(['Tony', 'Lisa', 'Michael', 'Ginger', 'Food']);
+  res.json({hello: "Satan!"});
 });
