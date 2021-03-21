@@ -1,6 +1,16 @@
-![OKO dev](logo.png "OKO dev")
+<img src="logo-retrolove-black.svg" width="400">
 
-# Template for Node (Typescript)
+# Node Score API
+
+Dockerized API for high scores.
+
+## Commands
+
+* `./run.sh` — run or initial build.
+* `./stop.sh` — stop.
+* `./build.sh` — update build.
+
+## Yarn commands
 
 Available commands:
 
