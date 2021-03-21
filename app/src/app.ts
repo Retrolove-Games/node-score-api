@@ -8,3 +8,7 @@ app.listen(3000, () => {
 app.get('/', (req, res, next) => {
   res.json({hello: "world!"});
 });
+
+app.get('/db', (req, res, next) => {
+  res.json({db: process.env.MYSQL_DATABASE});
+});
