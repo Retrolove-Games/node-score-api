@@ -6,5 +6,5 @@ app.listen(3000, () => {
 });
 
 app.get('/', (req, res, next) => {
-  res.json({hello: "Satan!"});
+  res.json({hello: "world!"});
 });
