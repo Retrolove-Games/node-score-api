@@ -4,6 +4,10 @@
 
 Dockerized API for high scores.
 
+## Schema
+
+![Schema](score-api.png)
+
 ## Commands
 
 * `./run.sh` — run or initial build.
