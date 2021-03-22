@@ -1,3 +1,4 @@
+import db from "./db/sequelize";
 var express = require('express');
 var app = express();
 
