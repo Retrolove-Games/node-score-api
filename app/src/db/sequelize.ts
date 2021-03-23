@@ -1,4 +1,5 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from 'sequelize-typescript';
+import { Project } from './models/Project';
 const fs = require("fs");
 const path = require("path");
 
@@ -18,6 +19,8 @@ const sequelize = new Sequelize(
     logging: false
   }
 );
+
+sequelize.addModels([Project]);
 
 const db: dbInterface = {
   sequelize: sequelize,

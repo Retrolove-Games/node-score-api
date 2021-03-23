@@ -1,3 +1,4 @@
+import { Project } from "./db/models/Project";
 import db from "./db/sequelize";
 var express = require('express');
 var app = express();
@@ -21,4 +22,6 @@ app.get('/', (req, res, next) => {
 
 app.get('/db', (req, res, next) => {
   res.json({db: process.env.MYSQL_DATABASE});
+  // const project = new Project({ name: "test" })
+  // project.save();
 });
