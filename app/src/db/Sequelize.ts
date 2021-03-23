@@ -1,7 +1,9 @@
-import { Sequelize } from 'sequelize-typescript';
-import { Project } from './models/Project';
+import { Sequelize } from "sequelize-typescript";
+import { Project } from "./models/Project";
+
 const fs = require("fs");
 const path = require("path");
+let connectionStatus = false;
 
 interface dbInterface {
   sequelize: Sequelize
@@ -20,11 +22,25 @@ const sequelize = new Sequelize(
   }
 );
 
+// Add models
 sequelize.addModels([Project]);
+
+(async () => {
+  try {
+    await sequelize.authenticate();
+    connectionStatus = true;
+  } catch (error) {
+    console.error("Unable to connect to the database");
+  }
+})();
 
 const db: dbInterface = {
   sequelize: sequelize,
   Sequelize: Sequelize
 };
+
+export const status = () => {
+  return connectionStatus;
+}
 
 export default db;

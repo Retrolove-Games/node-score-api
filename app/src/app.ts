@@ -1,19 +1,11 @@
 import { Project } from "./db/models/Project";
-import db from "./db/sequelize";
+import { status } from "./db/Sequelize";
 var express = require('express');
 var app = express();
 
-(async () => {
-  try {
-    await db.sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-})();
-
 app.listen(3000, () => {
   console.log('Server running on port 3000');
+  console.log("Initial connection status:", status());
 });
 
 app.get('/', (req, res, next) => {
@@ -21,7 +13,13 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/db', (req, res, next) => {
-  res.json({db: process.env.MYSQL_DATABASE});
-  // const project = new Project({ name: "test" })
-  // project.save();
+  const project = new Project({ name: "test" });
+  project
+    .save()
+    .then(() => {
+      res.json({db: process.env.MYSQL_DATABASE, status: status()});
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "DB connection problem" });
+    });
 });
