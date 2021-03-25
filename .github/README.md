@@ -8,11 +8,12 @@ Dockerized API for high scores.
 
 ![Schema](score-api.png)
 
-## Commands
+## Local commands (Docker)
 
-* `./run.sh` — run or initial build.
-* `./stop.sh` — stop.
-* `./build.sh` — update build.
+* `bin/run.sh` — run or initial build.
+* `bin/stop.sh` — stop.
+* `bin/run-db.sh` — run db only (can be used with `yarn start`).
+* `bin/build.sh` — update build.
 
 ## Yarn commands
 
