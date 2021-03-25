@@ -1,3 +1,3 @@
 #!/bin/sh
 cd ..
-/usr/bin/docker stop nodescoreapi_app_1 nodescoreapi_mysqldb_1
+docker stop node-score-api-app node-score-api-db

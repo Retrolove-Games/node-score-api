@@ -1,3 +1,3 @@
 #!/bin/sh
 cd ..
-/usr/bin/docker-compose up -d
+docker-compose up -d

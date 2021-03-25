@@ -3,6 +3,7 @@ version: "3"
 services:
   mysqldb:
     image: mysql
+    container_name: node-score-api-db
     command: 
       - '--secure-file-priv=NULL'
     restart: always
@@ -21,7 +22,8 @@ services:
     build:
       context: .
       dockerfile: ./app/Dockerfile
-    image: nodejs-score-api
+    image: node-score-api
+    container_name: node-score-api-app
     env_file: ./.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
