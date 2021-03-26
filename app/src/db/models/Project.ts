@@ -1,4 +1,4 @@
-import { Table, Column, Model, AutoIncrement, PrimaryKey } from "sequelize-typescript"
+import { Table, Column, Model, AutoIncrement, PrimaryKey, Length } from "sequelize-typescript"
 
 @Table(
   {
@@ -12,6 +12,11 @@ export class Project extends Model {
   @Column
   id: number
   
+  @Length({ min: 3, max: 255 })
   @Column
   name: string
+
+  @Length({ min: 3, max: 255 })
+  @Column
+  encryption_key: string
 }
