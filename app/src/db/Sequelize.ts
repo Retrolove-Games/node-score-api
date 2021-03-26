@@ -1,4 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
+import { Highscore } from "./models/Highscore";
 import { Project } from "./models/Project";
 
 let connectionStatus = false;
@@ -21,7 +22,7 @@ const sequelize = new Sequelize(
 );
 
 // Add models
-sequelize.addModels([Project]);
+sequelize.addModels([Project, Highscore]);
 
 (async () => {
   try {
