@@ -1,13 +1,11 @@
 import { Sequelize } from "sequelize-typescript";
 import { Project } from "./models/Project";
 
-const fs = require("fs");
-const path = require("path");
 let connectionStatus = false;
 
 interface dbInterface {
   sequelize: Sequelize
-  Sequelize: object
+  Sequelize: typeof Sequelize
 }
 
 const sequelize = new Sequelize(
@@ -39,7 +37,7 @@ const db: dbInterface = {
   Sequelize: Sequelize
 };
 
-export const status = () => {
+export const status = (): boolean => {
   return connectionStatus;
 }
 
