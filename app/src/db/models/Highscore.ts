@@ -1,4 +1,4 @@
-import { Table, Column, Model, AutoIncrement, PrimaryKey, Length, NotNull } from "sequelize-typescript"
+import { Table, Column, Model, AutoIncrement, PrimaryKey, Length, NotNull, AllowNull } from "sequelize-typescript"
 
 @Table(
   {
@@ -12,7 +12,7 @@ export class Highscore extends Model {
   @Column
   id: number
 
-  @NotNull
+  @AllowNull(false)
   @Column
   projectId: number
   
@@ -20,7 +20,7 @@ export class Highscore extends Model {
   @Column
   nickname: string
 
-  @NotNull
+  @AllowNull(false)
   @Column
   score: number
 
