@@ -14,7 +14,7 @@ export class Highscore extends Model {
 
   @AllowNull(false)
   @Column
-  projectId: number
+  project_id: number
   
   @Length({ min: 3, max: 255 })
   @Column
