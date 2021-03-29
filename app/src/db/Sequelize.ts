@@ -1,3 +1,4 @@
+import { exit } from "node:process";
 import { Sequelize } from "sequelize-typescript";
 import { Highscore } from "./models/Highscore";
 import { Project } from "./models/Project";
@@ -30,6 +31,7 @@ sequelize.addModels([Project, Highscore]);
     connectionStatus = true;
   } catch (error) {
     console.error("Unable to connect to the database");
+    process.exit(1);
   }
 })();
 
