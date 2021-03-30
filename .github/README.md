@@ -6,7 +6,7 @@ Dockerized API for high scores.
 
 ## Schema
 
-![Schema](score-api.png)
+![Schema](score-api-schema.png)
 
 ## Local commands (Docker)
 
