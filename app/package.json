@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
-    "start": "tsc && NODE_ENV=development node -r dotenv/config dist/app.js dotenv_config_path=../.env",
+    "start": "tsc && NODE_ENV=development node -r dotenv/config dist/app.js dotenv_config_path=.env",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",

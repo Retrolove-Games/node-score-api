@@ -1,4 +1,3 @@
-import { exit } from "node:process";
 import { Sequelize } from "sequelize-typescript";
 import { Highscore } from "./models/Highscore";
 import { Project } from "./models/Project";
@@ -10,7 +9,7 @@ interface dbInterface {
   Sequelize: typeof Sequelize
 }
 
-const sequelize = new Sequelize(
+const sequelize = new Sequelize (
   process.env.MYSQL_DATABASE,
   process.env.MYSQL_USERNAME,
   process.env.MYSQL_ROOT_PASSWORD,
@@ -30,7 +29,7 @@ sequelize.addModels([Project, Highscore]);
     await sequelize.authenticate();
     connectionStatus = true;
   } catch (error) {
-    console.error("Unable to connect to the database");
+    console.error("Unable to connect to the database", error);
     process.exit(1);
   }
 })();
