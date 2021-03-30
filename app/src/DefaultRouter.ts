@@ -20,9 +20,8 @@ DefaultRouter.post("/score/:name", (request, response) => {
     });
 });
 
-// get scores
+// Get scores
 DefaultRouter.get("/score/:name/:count?", (request, response) => {
-
   getResults(request.params.name, +request.params.count || 10)
     .then(data => {
       response.json(data);
