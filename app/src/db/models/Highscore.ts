@@ -2,7 +2,9 @@ import { Table, Column, Model, AutoIncrement, PrimaryKey, Length, NotNull, Allow
 
 @Table(
   {
-    timestamps: false,
+    timestamps: true,
+    updatedAt: false,
+    createdAt: "created_at",
     tableName: "highscores"
   }
 )

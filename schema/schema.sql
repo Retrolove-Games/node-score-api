@@ -11,8 +11,8 @@ CREATE TABLE `highscores` (
   `project_id` int,
   `nickname` varchar(255) NOT NULL,
   `score` int NOT NULL DEFAULT 0,
-  `source` varchar(100)
+  `source` varchar(100),
+  `created_at` datetime
 );
 
 ALTER TABLE `highscores` ADD FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`);
-
