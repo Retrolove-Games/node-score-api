@@ -8,6 +8,32 @@ Dockerized API for high scores. Data sending to API is AES encrypted to fight wi
 
 ![Schema](score-api-schema.png)
 
+## There are two api endpoints
+
+---
+
+`POST /score/:name` 
+
+Where the `:name` variable is a project name. 
+
+You need to send data in a following format:
+
+```json
+{
+    "data": "U2FsdGVkX1+uWyn+yG7xd5VI44GnQnCUK8oprXTmAuh1SjL1MbUqVD2h1vOG/8yoZ6QwmTWAdstinjGxz899Vmrltz8vcDGf5RuVWCKeIBo="
+}
+```
+
+With `content-type` header set to `application/json`.
+
+---
+
+`GET /score/:name/:count` 
+
+Where the `:name` is a project name and `:count` is a number of returned rows.
+
+---
+
 ## Configuration
 
 Remember that there are two `.env` files. One is for the `Docker` and another one is for local (yarn start). You can run only database container, if you wish :)
