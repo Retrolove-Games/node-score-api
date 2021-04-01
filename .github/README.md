@@ -8,9 +8,7 @@ Dockerized API for high scores. Data sending to API is AES encrypted to fight wi
 
 ![Schema](score-api-schema.png)
 
-## There are two api endpoints
-
----
+## Api endpoints
 
 `POST /score/:name` 
 
@@ -20,11 +18,21 @@ You need to send data in a following format:
 
 ```json
 {
-    "data": "U2FsdGVkX1+uWyn+yG7xd5VI44GnQnCUK8oprXTmAuh1SjL1MbUqVD2h1vOG/8yoZ6QwmTWAdstinjGxz899Vmrltz8vcDGf5RuVWCKeIBo="
+    "data": "AES encrypted score object"
 }
 ```
 
 With `content-type` header set to `application/json`.
+
+Where the score object looks like this:
+
+```js
+{
+    nickname: "Jan",
+    score: 1000,
+    source: "itch.io"
+}
+```
 
 ---
 
@@ -34,11 +42,28 @@ Where the `:name` is a project name and `:count` is a number of returned rows.
 
 ---
 
+## Encryption example in JS
+
+```js
+import CryptoJS from "crypto-js";
+
+const params = {
+    nickname: "Jan",
+    score: 1000,
+    source: "itch.io"
+};
+
+const data = CryptoJS.AES.encrypt(
+    JSON.stringify({...params, source: window.location.hostname}),
+    "enctyption key"
+).toString();
+```
+
 ## Configuration
 
 Remember that there are two `.env` files. One is for the `Docker` and another one is for local (yarn start). You can run only database container, if you wish :)
 
-### How to get Docker container db ip
+### How to get Docker container db ip address
 
 1. Execute `docker network ls` to see how many bridge drivers you have. In my case i had 2 and containers where using different ones
 2. If you have multiple bridge drivers, make sure that you starting your containers which will be talking with each other using same bridge network docker `run -d -t --network networkname  --name containername`
