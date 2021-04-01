@@ -2,11 +2,21 @@
 
 # Node Score API
 
-Dockerized API for high scores.
+Dockerized API for high scores. Data sending to API is AES encrypted to fight with score tampering.
 
 ## Schema
 
 ![Schema](score-api-schema.png)
+
+## Configuration
+
+Remember that there are two `.env` files. One is for the `Docker` and another one is for local (yarn start). You can run only database container, if you wish :)
+
+### How to get Docker container db ip
+
+1. Execute `docker network ls` to see how many bridge drivers you have. In my case i had 2 and containers where using different ones
+2. If you have multiple bridge drivers, make sure that you starting your containers which will be talking with each other using same bridge network docker `run -d -t --network networkname  --name containername`
+3. Run `docker network inspect networkname`. You will see details of network with list of containers. Each container will have IPv4Address associated with it. Use value of these address to communicate instead of localhost or 127.0.0.1
 
 ## Local commands (Docker)
 
